@@ -2,7 +2,7 @@
 
 type MyReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
 
-
+// tip: 不能省略 ...args: any[]
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
