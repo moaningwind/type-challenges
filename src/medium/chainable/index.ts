@@ -1,9 +1,10 @@
 /* _____________ Your Code Here _____________ */
 
-type Chainable<T extends object = {}> = {
-  option<K extends Exclude<string, keyof T>, V>(key: K, value: V): Chainable<T & {
-    [P in K]: V
-  }>
+type Chainable<T extends Record<string, unknown> = {}> = {
+  option<K extends string, V = unknown>(
+    key: Exclude<K, keyof T>,
+    value: V
+  ): Chainable<T & Record<K, V>>
   get(): T
 }
 
@@ -26,7 +27,7 @@ const result2 = a
 
 type cases = [
   Expect<Alike<typeof result1, Expected1>>,
-  Expect<Alike<typeof result2, Expected2>>,
+  Expect<Alike<typeof result2, Expected2>>
 ]
 
 type Expected1 = {
