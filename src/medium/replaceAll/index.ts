@@ -1,6 +1,10 @@
 /* _____________ Your Code Here _____________ */
 
-type ReplaceAll<S extends string, From extends string, To extends string> = From extends ''
+type ReplaceAll<
+  S extends string,
+  From extends string,
+  To extends string
+> = From extends ''
   ? S
   : S extends `${infer P}${From}${infer R}`
   ? `${P}${To}${ReplaceAll<R, From, To>}`

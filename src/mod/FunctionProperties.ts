@@ -10,7 +10,9 @@ import type { Equal, Expect } from '@type-challenges/utils'
 
 type cases = [
   Expect<Equal<FunctionPropertyNames<Person>, 'update' | 'add'>>,
-  Expect<Equal<FunctionProperties<Person>, { update: Person['update']; add: Person['add'] }>>
+  Expect<
+    Equal<FunctionProperties<Person>, { update: Person['update']; add: Person['add'] }>
+  >
 ]
 
 interface Person {

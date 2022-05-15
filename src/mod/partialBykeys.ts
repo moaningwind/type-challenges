@@ -10,9 +10,7 @@ type Simplify<T> = {
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
-type cases = [
-  Expect<Equal<Simplify<partialBykeys<User1, 'id'>>, User2>>,
-]
+type cases = [Expect<Equal<Simplify<partialBykeys<User1, 'id'>>, User2>>]
 
 interface User1 {
   id: number
