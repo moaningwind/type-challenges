@@ -1,11 +1,11 @@
 /* _____________ Your Code Here _____________ */
-// TODO why
+// 1. P in Exclude<keyof T, K>  2. P in keyof T as Exclude<P, K>
 // type MyReadonly2<T, K extends keyof T = keyof T> = { readonly [R in K]: T[R] } & {
-//   [N in Exclude<keyof T, K>]: T[N]
+//   [P in Exclude<keyof T, K>]: T[P]
 // }
 
 type MyReadonly2<T, K extends keyof T = keyof T> = { readonly [P in K]: T[P] } & {
-  [P in keyof T as P extends K ? never : P]: T[P]
+  [P in keyof T as Exclude<P, K>]: T[P]
 }
 
 /**

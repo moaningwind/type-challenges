@@ -4,6 +4,8 @@ type IsNever<T> = [T] extends [never] ? true : false
 // type IsNever<T> = T extends never ? true : false
 // 泛型里 never extends never 为 never
 
+// type IsNever<T> = Equal<T, never>
+
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
