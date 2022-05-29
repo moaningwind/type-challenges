@@ -7,6 +7,15 @@ export function twoSum(
   return set.has(target - arr[0]) || twoSum(arr.slice(1), target, set.add(arr[0]))
 }
 
+export function threeSum(arr: number[], target: number): boolean {
+  if (arr.length < 3) return false
+  return arr.some((a, i) => {
+    const rest = arr.slice(i + 1)
+    console.log(rest, target - a)
+    return twoSum(rest, target - a)
+  })
+}
+
 type ToTuple<L extends number, T extends unknown[] = []> = T extends { length: L }
   ? T
   : ToTuple<L, [...T, unknown]>
