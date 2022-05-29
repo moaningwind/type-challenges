@@ -1,10 +1,10 @@
-export function toSum(
+export function twoSum(
   arr: number[],
   target: number,
   set: Set<number> = new Set()
 ): boolean {
   if (arr.length === 0) return false
-  return set.has(target - arr[0]) || toSum(arr.slice(1), target, set.add(arr[0]))
+  return set.has(target - arr[0]) || twoSum(arr.slice(1), target, set.add(arr[0]))
 }
 
 type ToTuple<L extends number, T extends unknown[] = []> = T extends { length: L }
