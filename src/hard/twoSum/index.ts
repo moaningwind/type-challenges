@@ -1,39 +1,5 @@
-export function twoSum(
-  arr: number[],
-  target: number,
-  set: Set<number> = new Set()
-): boolean {
-  if (arr.length === 0) return false
-  return set.has(target - arr[0]) || twoSum(arr.slice(1), target, set.add(arr[0]))
-}
-
-export function threeSum(arr: number[], target: number): boolean {
-  if (arr.length < 3) return false
-  return arr.some((a, i) => {
-    const rest = arr.slice(i + 1)
-    console.log(rest, target - a)
-    return twoSum(rest, target - a)
-  })
-}
-
-type ToTuple<L extends number, T extends unknown[] = []> = T extends { length: L }
-  ? T
-  : ToTuple<L, [...T, unknown]>
-
-type Add<A extends number, B extends number> = [...ToTuple<A>, ...ToTuple<B>]['length']
-
-type Sub<A extends number, B extends number> = ToTuple<A> extends [
-  ...ToTuple<B>,
-  ...infer Tail
-]
-  ? Tail['length']
-  : -1
-
-type a = Sub<2, 2>
-
-type Tail<T extends number[]> = T extends [any, ...infer Tail] ? Tail : []
-
 /* _____________ Your Code Here _____________ */
+import type { Sub, Tail } from '../../utils'
 
 type TwoSum<N extends number[], T extends number, S = never> = N['length'] extends 0
   ? false
@@ -57,3 +23,16 @@ type cases = [
   Expect<Equal<TwoSum<[1, 2, 3], 5>, true>>,
   Expect<Equal<TwoSum<[1, 2, 3], 6>, false>>
 ]
+function twoSum(arr: number[], target: number, set: Set<number> = new Set()): boolean {
+  if (arr.length === 0) return false
+  return set.has(target - arr[0]) || twoSum(arr.slice(1), target, set.add(arr[0]))
+}
+
+function threeSum(arr: number[], target: number): boolean {
+  if (arr.length < 3) return false
+  return arr.some((a, i) => {
+    const rest = arr.slice(i + 1)
+    console.log(rest, target - a)
+    return twoSum(rest, target - a)
+  })
+}
