@@ -1,7 +1,8 @@
 /* _____________ Your Code Here _____________ */
-type ToString<T> = T extends number ? `${T}` : T extends string ? T : never
 
-type Trunc<T> = ToString<T> extends `${infer Head}.${infer Tail}` ? Head : ToString<T>
+type Trunc<T extends string | number> = `${T}` extends `${infer Head}.${infer Tail}`
+  ? Head
+  : `${T}`
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
