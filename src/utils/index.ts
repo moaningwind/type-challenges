@@ -1,14 +1,12 @@
-type ToTuple<L extends number, T extends unknown[] = []> = T extends { length: L }
-  ? T
-  : ToTuple<L, [...T, unknown]>
+import type { ConstructTuple } from '../medium/constructTuple'
 
 export type Add<A extends number, B extends number> = [
-  ...ToTuple<A>,
-  ...ToTuple<B>
+  ...ConstructTuple<A>,
+  ...ConstructTuple<B>
 ]['length']
 
-export type Sub<A extends number, B extends number> = ToTuple<A> extends [
-  ...ToTuple<B>,
+export type Sub<A extends number, B extends number> = ConstructTuple<A> extends [
+  ...ConstructTuple<B>,
   ...infer Tail
 ]
   ? Tail['length']
@@ -18,6 +16,6 @@ export type Tail<T extends unknown[]> = T extends [infer _, ...infer Tail] ? Tai
 
 export type Head<T extends unknown[]> = T extends [...infer Head, infer _] ? Head : T
 
-export type Last<T extends unknown[]> = T extends [...infer _, infer Tail] ? Tail : T
+export type Last<T extends unknown[]> = T extends [...infer _, infer Last] ? Last : T
 
-export type First<T extends unknown[]> = T extends [infer Head, ...infer _] ? Head : T
+export type First<T extends unknown[]> = T extends [infer First, ...infer _] ? First : T
