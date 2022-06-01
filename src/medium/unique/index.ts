@@ -1,16 +1,11 @@
 /* _____________ Your Code Here _____________ */
-
-type Include<T extends unknown[], U> = T extends [infer Head, ...infer Tail]
-  ? Equal<Head, U> extends true
-    ? true
-    : Include<Tail, U>
-  : false
+import type { Includes } from '../includes'
 
 type Unique<T extends unknown[], R extends unknown[] = []> = T extends [
   infer Head,
   ...infer Tail
 ]
-  ? Unique<Tail, Include<R, Head> extends true ? R : [...R, Head]>
+  ? Unique<Tail, Includes<R, Head> extends true ? R : [...R, Head]>
   : R
 
 /* _____________ Test Cases _____________ */
