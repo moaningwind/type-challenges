@@ -1,19 +1,9 @@
 /* _____________ Your Code Here _____________ */
+import { Sub } from './../../utils/index';
 
 // 这题不是很好写，需要分清楚边界条件，哪里需要 fill 原数组的元素，哪里需要 fill 新的元素
 // 利用好函数参数默认值，以尾递归的形式实现，也可不使用尾递归
 // 不过个人觉得这题使用尾递归的思路更好理解一些，不采用尾递归的话就是由子结果得到最终结果
-
-type ToTuple<L extends number, T extends unknown[] = []> = T extends { length: L }
-  ? T
-  : ToTuple<L, [...T, unknown]>
-
-type Sub<A extends number, B extends number> = ToTuple<A> extends [
-  ...ToTuple<B>,
-  ...infer Tail
-]
-  ? Tail['length']
-  : -1
 
 type gt<Left extends number, Right extends number> = Sub<
   Left,

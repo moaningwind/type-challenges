@@ -1,11 +1,5 @@
 /* _____________ Your Code Here _____________ */
 
-// type Flatten<T> = T extends [infer F, ...infer R]
-//   ? F extends unknown[]
-//     ? [...Flatten<F>, ...Flatten<R>]
-//     : [F, ...Flatten<R>]
-//   : T
-
 type FlattenOnce<T extends unknown[]> = T extends [infer F, ...infer R]
   ? F extends unknown[]
     ? [...F, ...FlattenOnce<R>]

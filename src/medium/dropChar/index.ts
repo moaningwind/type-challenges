@@ -1,16 +1,16 @@
 /* _____________ Your Code Here _____________ */
 
 // type DropChar<S, C, T extends string = ''> = S extends `${infer F}${infer R}`
-//   ? Equal<F, C> extends true
-//     ? DropChar<R, C, T>
-//     : DropChar<R, C, `${T}${F}`>
+//   ? DropChar<R, C, Equal<F, C> extends true ? T : `${T}${F}`>
 //   : T
 
-// 当C为'' First = b Last = utter fly! 会导致无限循环抛出错误
 type DropChar<
   S extends string,
   C extends string
-> = S extends `${infer First}${C}${infer Last}` ? DropChar<`${First}${Last}`, C> : S
+> = S extends `${infer First}${C}${infer Rest}`
+  ? // 当 C 为'' First = 'b' Rest = 'utter fly!' 会导致无限循环抛出错误
+    DropChar<`${First}${Rest}`, C>
+  : S
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

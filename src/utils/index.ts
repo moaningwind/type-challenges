@@ -14,10 +14,10 @@ export type Sub<A extends number, B extends number> = ToTuple<A> extends [
   ? Tail['length']
   : -1
 
-export type Tail<T extends unknown[]> = T extends [any, ...infer Tail] ? Tail : T
+export type Tail<T extends unknown[]> = T extends [infer _, ...infer Tail] ? Tail : T
 
-export type Head<T extends unknown[]> = T extends [...infer Head, any] ? Head : T
+export type Head<T extends unknown[]> = T extends [...infer Head, infer _] ? Head : T
 
-export type Last<T extends unknown[]> = T extends [...any, infer Tail] ? Tail : T
+export type Last<T extends unknown[]> = T extends [...infer _, infer Tail] ? Tail : T
 
-export type First<T extends unknown[]> = T extends [infer Head, ...any] ? Head : T
+export type First<T extends unknown[]> = T extends [infer Head, ...infer _] ? Head : T

@@ -7,7 +7,7 @@
 // }
 
 type RemoveIndexSignature<T> = {
-  [P in keyof T as P extends `${infer U}` ? P : never]: T[P]
+  [P in keyof T as P extends `${infer _}` ? P : never]: T[P]
 }
 
 /* _____________ Test Cases _____________ */

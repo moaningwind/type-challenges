@@ -1,6 +1,6 @@
 /* _____________ Your Code Here _____________ */
 
-type Shift<T> = T extends [infer F, ...infer R] ? R : never
+type Shift<T> = T extends [infer _, ...infer Rest] ? Rest : never
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

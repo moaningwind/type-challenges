@@ -1,7 +1,7 @@
 /* _____________ Your Code Here _____________ */
 
 type MinusOne<T extends number, Result extends number[] = []> = T extends Result['length']
-  ? Result extends [infer _F, ...infer R]
+  ? Result extends [infer _, ...infer R]
     ? R['length']
     : 0
   : MinusOne<T, [...Result, T]>

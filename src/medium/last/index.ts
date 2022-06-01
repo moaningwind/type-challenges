@@ -1,6 +1,6 @@
 /* _____________ Your Code Here _____________ */
 
-type Last<T extends any[]> = T extends [...infer O, infer L] ? L : never
+type Last<T extends any[]> = T extends [...infer _, infer Last] ? Last : never
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
