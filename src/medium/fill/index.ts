@@ -1,13 +1,13 @@
 /* _____________ Your Code Here _____________ */
-import { Sub } from './../../utils/index';
+import { Sub } from './../../utils/index'
 
 // 这题不是很好写，需要分清楚边界条件，哪里需要 fill 原数组的元素，哪里需要 fill 新的元素
 // 利用好函数参数默认值，以尾递归的形式实现，也可不使用尾递归
 // 不过个人觉得这题使用尾递归的思路更好理解一些，不采用尾递归的话就是由子结果得到最终结果
 
-type gt<Left extends number, Right extends number> = Sub<
-  Left,
-  Right
+type GreaterThanOrEqual<First extends number, Second extends number> = Sub<
+  First,
+  Second
 > extends -1
   ? false
   : true
@@ -21,8 +21,8 @@ type Fill<
   Cur extends any[] = [] // 表示当前的下标
 > = Cur['length'] extends T['length']
   ? []
-  : gt<Cur['length'], Start> extends true
-  ? gt<Cur['length'], End> extends true
+  : GreaterThanOrEqual<Cur['length'], Start> extends true
+  ? GreaterThanOrEqual<Cur['length'], End> extends true
     ? [T[Cur['length']], ...Fill<T, N, Start, End, [...Cur, any]>]
     : [N, ...Fill<T, N, Start, End, [...Cur, any]>]
   : [T[Cur['length']], ...Fill<T, N, Start, End, [...Cur, any]>]
@@ -37,8 +37,8 @@ type FillByTail<
   newArray extends any[] = []
 > = Array['length'] extends T['length']
   ? newArray
-  : gt<Array['length'], Start> extends true
-  ? gt<Array['length'], End> extends true
+  : GreaterThanOrEqual<Array['length'], Start> extends true
+  ? GreaterThanOrEqual<Array['length'], End> extends true
     ? FillByTail<T, N, Start, End, [...Array, any], [...newArray, T[Array['length']]]>
     : FillByTail<T, N, Start, End, [...Array, any], [...newArray, N]>
   : FillByTail<T, N, Start, End, [...Array, any], [...newArray, T[Array['length']]]>
