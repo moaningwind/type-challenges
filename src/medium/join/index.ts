@@ -1,6 +1,6 @@
 /* _____________ Your Code Here _____________ */
 
-type Join<
+export type Join<
   T extends unknown[],
   U extends string | number,
   K extends string = ''
