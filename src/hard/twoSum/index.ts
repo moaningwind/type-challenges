@@ -1,5 +1,5 @@
 /* _____________ Your Code Here _____________ */
-import type { Sub, Tail } from '../../utils'
+import type { Sub, Tail } from '@/utils'
 
 type TwoSum<N extends number[], T extends number, S = never> = N['length'] extends 0
   ? false

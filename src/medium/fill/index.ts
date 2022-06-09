@@ -1,5 +1,5 @@
 /* _____________ Your Code Here _____________ */
-import { Sub } from './../../utils/index'
+import { Sub } from '@/utils/index'
 
 // 这题不是很好写 需要分清楚边界条件 哪里需要 fill 原数组的元素 哪里需要 fill 新的元素
 // 利用好函数参数默认值 以尾递归的形式实现 也可不使用尾递归
