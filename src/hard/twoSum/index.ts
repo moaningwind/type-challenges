@@ -32,7 +32,6 @@ function threeSum(arr: number[], target: number): boolean {
   if (arr.length < 3) return false
   return arr.some((a, i) => {
     const rest = arr.slice(i + 1)
-    console.log(rest, target - a)
     return twoSum(rest, target - a)
   })
 }
