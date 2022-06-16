@@ -1,6 +1,5 @@
 /* _____________ Your Code Here _____________ */
 
-// your answers
 type BEM<B extends string, E extends string[], M extends string[]> = E['length'] extends 0
   ? M['length'] extends 0
     ? B

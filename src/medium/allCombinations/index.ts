@@ -1,11 +1,10 @@
 /* _____________ Your Code Here _____________ */
 
-// your answers
 type AllCombinations<
   S extends string,
   PRE extends string = ''
-> = S extends `${infer L}${infer POST}`
-  ? `${L}${AllCombinations<`${POST}${PRE}`>}` | AllCombinations<POST, `${PRE}${L}`>
+> = S extends `${infer L}${infer Tail}`
+  ? `${L}${AllCombinations<`${Tail}${PRE}`>}` | AllCombinations<Tail, `${PRE}${L}`>
   : ''
 
 /* _____________ Test Cases _____________ */

@@ -1,7 +1,7 @@
 /* _____________ Your Code Here _____________ */
 
-type AppendArgument<Fn extends (...args: any[]) => any, A> = (
-  ...args: [...Parameters<Fn>, A]
+type AppendArgument<Fn extends (...args: any[]) => any, T> = (
+  ...args: [...Parameters<Fn>, T]
 ) => ReturnType<Fn>
 
 /* _____________ Test Cases _____________ */
