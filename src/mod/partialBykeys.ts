@@ -1,5 +1,5 @@
 /* _____________ Your Code Here _____________ */
-type partialBykeys<T, K extends keyof T = keyof T> = {
+type partialByKeys<T, K extends keyof T = keyof T> = {
   [P in K]?: T[P]
 } & Omit<T, K>
 
@@ -11,8 +11,8 @@ type Simplify<T> = {
 import type { Equal, Expect } from '@type-challenges/utils'
 
 type cases = [
-  Expect<Equal<Simplify<partialBykeys<User1, 'id'>>, User2>>,
-  Expect<Equal<Simplify<partialBykeys<User1>>, Partial<User1>>>
+  Expect<Equal<Simplify<partialByKeys<User1, 'id'>>, User2>>,
+  Expect<Equal<Simplify<partialByKeys<User1>>, Partial<User1>>>
 ]
 
 interface User1 {

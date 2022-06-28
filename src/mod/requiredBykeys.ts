@@ -1,5 +1,5 @@
 /* _____________ Your Code Here _____________ */
-type requiredBykeys<T, K extends keyof T> = {
+type requiredByKeys<T, K extends keyof T> = {
   [P in K]-?: T[P]
 } & Omit<T, K>
 
@@ -10,8 +10,8 @@ import type { Equal, Expect, Alike } from '@type-challenges/utils'
 type Simplify<T> = Pick<T, keyof T>
 
 type cases = [
-  Expect<Equal<Simplify<requiredBykeys<User2, 'id'>>, User1>>,
-  Expect<Alike<requiredBykeys<User2, 'id'>, User1>>
+  Expect<Equal<Simplify<requiredByKeys<User2, 'id'>>, User1>>,
+  Expect<Alike<requiredByKeys<User2, 'id'>, User1>>
 ]
 
 interface User1 {
