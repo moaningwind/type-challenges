@@ -23,15 +23,36 @@ type cases = [
   Expect<Equal<TwoSum<[1, 2, 3], 5>, true>>,
   Expect<Equal<TwoSum<[1, 2, 3], 6>, false>>
 ]
-function twoSum(arr: number[], target: number, set: Set<number> = new Set()): boolean {
-  if (arr.length === 0) return false
-  return set.has(target - arr[0]) || twoSum(arr.slice(1), target, set.add(arr[0]))
+
+// export function twoSum(arr: any[], target: number) {
+//   return arr.some((item, index) => arr.slice(index + 1).includes(target - item))
+// }
+
+// export function twoSum(arr: number[], target: number, set: Set<number> = new Set()): boolean {
+//   if (arr.length === 0) return false
+//   return set.has(target - arr[0]) || twoSum(arr.slice(1), target, set.add(arr[0]))
+// }
+
+export function twoSum(arr: number[], target: number, set: Set<number> = new Set()): boolean {
+  return arraySome(arr, (item) => {
+    if (set.has(target - item)) {
+      return  true
+    } else {
+      set.add(item)
+      return false
+    }
+  })
+}
+
+// 实现数组的some方法
+function arraySome<T>(arr: T[], fn: (item: T, index: number) => boolean): boolean {
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i)) return true
+  }
+  return false
 }
 
 function threeSum(arr: number[], target: number): boolean {
   if (arr.length < 3) return false
-  return arr.some((a, i) => {
-    const rest = arr.slice(i + 1)
-    return twoSum(rest, target - a)
-  })
+  return arr.some((a, i) => twoSum(arr.slice(i + 1), target - a))
 }
